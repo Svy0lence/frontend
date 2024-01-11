@@ -1,0 +1,52 @@
+.color{
+    background: rgb(216, 216, 25);
+    border: 0;
+}
+
+.circulo {
+    width: 7px;
+    height: 7px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.circulo2 {
+    width: 7px;
+    height: 7px;
+    background-color: rgb(221, 10, 10);
+    border-radius: 50%;
+}
+
+
+
+.component-container {
+    position: relative;
+    /* Otros estilos para tu componente */
+  }
+  
+  .disabled {
+    pointer-events: none; /* Deshabilita la interacción con los elementos hijos */
+    opacity: 0.5; /* Puedes ajustar esto para que se vea más transparente si lo deseas */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    /* Ajusta la opacidad según sea necesario */
+  }
+  .full-width{
+    width: 30%;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-button {
+    margin-left: 10px; /* Ajusta el espacio entre el campo de entrada y el botón */
+  }

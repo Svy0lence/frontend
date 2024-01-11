@@ -1,0 +1,56 @@
+<div class="search-container">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Filtro de la Tabla Salidas</mat-label>
+      <input matInput placeholder="Ingresa y apreta el boton azul">
+      <!-- <mat-icon matSuffix>search</mat-icon> -->
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="search-button"  style="display: flex; align-items: center; justify-content: center;">
+      <mat-icon style="margin: 0;">search</mat-icon>
+    </button>
+  </div>
+  <mat-table [dataSource]="dataSource">
+      <!-- Columnas de la tabla -->
+      
+      <ng-container matColumnDef="clave">
+        <mat-header-cell *matHeaderCellDef>Clave</mat-header-cell>
+        <mat-cell *matCellDef="let salida">{{ salida.clave }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef>Fecha Registro</mat-header-cell>
+        <mat-cell *matCellDef="let salida">{{ salida.fecha_registro }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+        <mat-cell *matCellDef="let salida">{{ salida.tipo }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="producto">
+          <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+          <mat-cell *matCellDef="let salida">{{ salida.producto }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lote">
+          <mat-header-cell *matHeaderCellDef>N°Lote</mat-header-cell>
+          <mat-cell *matCellDef="let salida">{{ salida.lote }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="cantidad">
+          <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+          <mat-cell *matCellDef="let salida">{{ salida.cantidad }}</mat-cell>
+        </ng-container>
+      
+      <ng-container matColumnDef="acciones" style="position: relative;">
+        <mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" (click)="openDialog()" class="-ml-4">+ Agregar</button></mat-header-cell>
+        <mat-cell *matCellDef="let salida">
+          <button mat-button  class="-ml-4 color" (click)="openDialog2(salida)" style="display: flex; align-items: center; justify-content: center;">
+            <mat-icon style="margin: 0;">
+              plagiarism
+              </mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator
+    #paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"
+    style="margin-top: 0;"
+    ></mat-paginator>

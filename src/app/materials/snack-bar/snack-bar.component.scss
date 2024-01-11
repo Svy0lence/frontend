@@ -1,0 +1,43 @@
+.example-pizza-party {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .example-pizza-party span {
+    margin: 0; /* Elimina cualquier margen predeterminado que pueda afectar al texto */
+  }
+
+ 
+ 
+
+   .color{
+     background-color: #388338;
+     border-radius: 50%;
+   }
+
+   .color2 {
+    position: relative; /* Posición relativa para los círculos */
+    overflow: hidden; /* Ocultar los círculos que se salen del contenedor */
+  }
+  
+  .color2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Inicia desde fuera del contenedor */
+    width: 200%; /* Ancho inicial */
+    height: 100%; /* Altura igual al contenedor */
+    background: radial-gradient(circle, transparent 0%, #38833863 30%, transparent 100%); /* Degradado radial */
+    animation: circleAnimation 5s linear infinite; /* Animación */
+  }
+  
+  @keyframes circleAnimation {
+    0%, 100% {
+    transform: scale(0); /* Escala inicial y final (círculos invisibles) */
+  }
+  50% {
+    transform: scale(1); /* Escala a la mitad de la animación (círculos visibles) */
+  }
+  }
+  
+  

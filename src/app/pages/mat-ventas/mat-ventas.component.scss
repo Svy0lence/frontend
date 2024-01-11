@@ -1,0 +1,92 @@
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.product-list {
+    list-style: none;
+    padding: 0;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+.product-item2 {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #dee2e0;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.button1 {
+    background-color: #56c287;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.color{
+    color: #000000;
+    border-radius: 10px;
+    padding: 10px; 
+    width: 60%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.position{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center;
+}
+  
+.example-full-width {
+    width: 60%;
+  }
+
+.contenedor{
+    text-align: right;
+}
+
+.selected-button {
+    background-color: #c0353c; /* Cambia el color a tu preferencia */
+    color: white; /* Cambia el color del texto si es necesario */
+  }
+
+  .selected {
+    background-color: #dee2e0; /* Cambia el color de fondo */
+    /* Otros estilos para indicar la selección */
+  }
+
+  .matcolor{
+    color: #ffffff;
+    background-color: #17a50a;
+  }
+

@@ -1,0 +1,47 @@
+<div class="search-container">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Filtro de la Tabla Categorias</mat-label>
+    <input matInput placeholder="Ingresa y apreta el boton azul">
+    <!-- <mat-icon matSuffix>search</mat-icon> -->
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="search-button"  style="display: flex; align-items: center; justify-content: center;">
+    <mat-icon style="margin: 0;">search</mat-icon>
+  </button>
+</div>
+<mat-table [dataSource]="dataSource">
+    <!-- Columnas de la tabla -->
+    <ng-container matColumnDef="numero">
+        <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+        <mat-cell *matCellDef="let cate">{{ cate.id }}</mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+      <mat-cell *matCellDef="let cate">{{ cate.descripcion }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="estadoCategoria">
+      <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+      <mat-cell *matCellDef="let cate" >
+        <div [ngClass]="cate.estadoCategoria === 1 ? 'circulo' : 'circulo2'"></div>
+        {{ cate.estadoCategoria === 1 ? 'Activo' : 'Inactivo' }}
+      </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="acciones" style="position: relative;">
+      <mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" (click)="openDialog()" class="-ml-4">+ Categorias</button></mat-header-cell>
+      <mat-cell *matCellDef="let cate">
+        <button mat-raised-button color="primary" class="-ml-4" (click)="opendialog2(cate)" style="display: flex; align-items: center; justify-content: center;">
+          <mat-icon style="margin: 0;">edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" class="ml-2" (click)="messageAlert(cate)" style="display: flex; align-items: center; justify-content: center;">
+          <mat-icon style="margin: 0;">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+  #paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"
+  style="margin-top: 0;"
+  ></mat-paginator>

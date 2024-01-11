@@ -1,0 +1,57 @@
+<form class="registration-form" fxLayout="column" [formGroup]="registerForm">
+    <h2>Editar el Rol</h2>
+      <label class="mt-2">Ingrese nombre:</label>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nombres" formControlName="nombre" class="-mb-5">
+      </mat-form-field>
+      <label class="mt-2">Elije el Estado :</label>
+      <mat-slide-toggle  [(ngModel)]="toggleChecked" (change)="onToggleChange()" formControlName="estado" checked >
+        <!--<p *ngIf="toggleChecked">Activo</p>
+        <p *ngIf="!toggleChecked">Inactivo</p>-->
+      </mat-slide-toggle>
+    </form>
+   
+      
+    <div class="col-md-10 ml-16 -mt-3">
+      <div class="card card-secondary">
+        <div class="card-header">
+          <h3 class="card-title">Editar los Permisos</h3>
+        </div>
+    
+        <div class="table-responsive">
+
+          <div class="contenedor">
+            <div *ngFor="let menu of menus" class="columna">
+              <section class="example-section">
+                <h5>
+                  <mat-checkbox [(ngModel)]="menu.completed" (change)="seleccionarMenu(menu)">
+                    {{ menu.nombre }}
+                  </mat-checkbox>
+                </h5>
+                <div *ngFor="let submenu of menu.submenus">
+                  <mat-checkbox
+                    [(ngModel)]="submenu.completed"
+                    (ngModelChange)="desSeleccionarMenu(menu)"
+                    [disabled]="!menu.completed"
+                  >
+                    {{ submenu.nombre }}
+                  </mat-checkbox>
+                  <br>
+                </div>
+              </section>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+       
+                      
+        <form class="registration-form" fxLayout="column">
+            <button mat-raised-button class="mt-2" color="primary" (click)="registrar()">Actualizar</button>
+        </form>
+      
+      
+  
+

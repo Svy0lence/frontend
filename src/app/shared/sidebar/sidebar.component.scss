@@ -1,0 +1,17 @@
+.color {
+  background: linear-gradient(to right, #021750, #2C4D9E);
+  background-size: 200% 100%; /* Añade el tamaño deseado */
+  animation: gradientAnimation 20s linear infinite; /* Asigna la animación */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 100%; 
+  }
+  50%{
+    background-position: 100% 0%; 
+  }
+  100% {
+    background-position: 0% 100%; 
+  }
+}

@@ -1,0 +1,14 @@
+
+<form class="registration-form" fxLayout="column">
+    <h2>Creacion de una Categoria</h2>
+      <label class="mt-2">Ingrese nombre:</label>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nombre de la Categoria" [formControl]="descripcion">
+      </mat-form-field>
+     
+
+     
+
+      <button mat-raised-button class="mt-2" color="primary" (click)="registrar()" [disabled]="descripcion.invalid">Crear</button>
+  </form>
+  

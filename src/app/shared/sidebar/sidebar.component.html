@@ -1,0 +1,87 @@
+<!-- Main Sidebar Container -->
+ <aside class="main-sidebar color sidebar-dark-primary elevation-4">
+    <!-- Brand Logo  -->
+    <div href="../../index3.html" class="brand-link">
+      <img src="../assets/img/paloma.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Mi Fortaleza</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) ./assets/dist/img/user2-160x160.jpg-->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img [src]="API_URL+'images/'+usuario.photo" class="brand-image img-circle elevation-3" style="max-width: none" width="40" height="40">
+        </div>
+        <div class="info">
+          <div href="#" class="d-block text-white">{{ usuario.username }}</div>
+        </div>
+      </div>
+      
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+           
+
+          <!-- Menús Padre -->
+          
+          <ng-container *ngFor="let menuP of menusPadre">
+            <li class="nav-header">{{ menuP.nombre }}</li>
+            <!-- Menús Hijo -->
+            
+            <li class="nav-item" *ngFor="let menuH of menusHijo">
+              <ng-container *ngIf="menuP.posicion === menuH.padreId">
+                <a class="nav-link" style="cursor: pointer;" [routerLink]="[menuH.ruta]">
+                  <i [ngClass]="menuH.icono"></i>
+                  <p class="ml-2">{{ menuH.nombre }}</p>
+                </a>
+              </ng-container>
+            </li>
+          </ng-container>
+
+          
+          <li class="nav-header">SALIR</li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="logout()">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p class="ml-2">
+                Logout
+              </p>
+            </a>
+          </li> 
+          
+            
+            
+            
+          
+          
+          <!--<div>
+             Menús Padre 
+            <ul>
+              <ng-container *ngFor="let button of NavHeader">
+                <li class="nav-header">{{ button.header }}</li>
+              </ng-container>
+                
+                <ul>
+                  <ng-container *ngFor="let menuH of NavButton">
+                    <li class="nav-item" *ngIf="button.header === menuH.">
+                      <a class="nav-link" style="cursor: pointer;" [routerLink]="[menuH.ruta]">
+                        <i class="fa fa-users"></i>
+                        <p class="ml-2">{{ menuH.label }}</p>
+                      </a>
+                    </li>
+                  </ng-container>
+                </ul>
+              </ng-container>
+            </ul>
+          </div>-->
+          
+         
+            
+        </ul>
+
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

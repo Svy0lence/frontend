@@ -1,0 +1,40 @@
+
+<form class="registration-form" fxLayout="column" [formGroup]="registerForm">
+    <h2>Notificar una Salida</h2>
+      <label class="mt-2">Ingrese el Tipo:</label>
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <label class="mt-2">Ingresa el Lote:</label>
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Buscar producto"
+               aria-label="Producto"
+               matInput
+               formControlName="id_producto"
+               [matAutocomplete]="auto"
+               (keyup)="BuscarEntrada($event)"
+               >
+        
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onProductSelected($event)">
+          <mat-option *ngFor="let product of filteredOptions | async" [value]="product">
+            {{ product.descripcion }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <label class="mt-2">Ingrese la Cantidad:</label>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Ingrese la Cantindad" formControlName="cantidad" type="number">
+      </mat-form-field>
+      
+  
+      <button mat-raised-button class="mt-2" color="primary" (click)="registrar()" [disabled]="!registerForm.valid">!Notificar</button>
+  </form>
+  
+  

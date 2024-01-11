@@ -1,0 +1,32 @@
+form{
+    
+    padding-left: 40px;
+    padding-top: 30px ;
+    padding-right: 40px;
+    padding-bottom: 40px;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.columna {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+@media screen and (min-width: 900px) {
+    .contenedor {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  
+  
+@media screen and (min-width: 1200px) {
+    .contenedor {
+      grid-template-columns: repeat(4, 1fr);
+    }
+}

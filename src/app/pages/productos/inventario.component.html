@@ -1,0 +1,66 @@
+<div class="search-container">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Filtro de la Tabla Productos</mat-label>
+    <input matInput placeholder="Ingresa y apreta el boton azul">
+    <!-- <mat-icon matSuffix>search</mat-icon> -->
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="search-button"  style="display: flex; align-items: center; justify-content: center;">
+    <mat-icon style="margin: 0;">search</mat-icon>
+  </button>
+</div>
+<mat-table [dataSource]="dataSource">
+    <!-- Columnas de la tabla -->
+    <ng-container matColumnDef="clave">
+      <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.clave }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.descripcion }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.precio_venta_1 }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="categoria">
+      <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.categoria }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="departamento">
+      <mat-header-cell *matHeaderCellDef>Departamento</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.departamento }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="unidad">
+      <mat-header-cell *matHeaderCellDef>Unidad</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.unidad_compra }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="stock">
+      <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.stock_actual }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="photo">
+      <mat-header-cell *matHeaderCellDef>Imagen</mat-header-cell>
+      <mat-cell *matCellDef="let producto">
+        <img [src]="API_URL+'images/'+producto.image" alt="Imagen" width="50">
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="acciones" style="position: relative;">
+      <mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" (click)="openDialog()" class="-ml-4">+ Productos</button></mat-header-cell>
+      <mat-cell *matCellDef="let producto">
+        <button mat-raised-button color="primary" class="-ml-4" (click)="opendialog2(producto)" style="display: flex; align-items: center; justify-content: center;">
+          <mat-icon style="margin: 0;">edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" class="ml-2" (click)="messageAlert(producto)" style="display: flex; align-items: center; justify-content: center;">
+          <mat-icon style="margin: 0;">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+  #paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"
+  style="margin-top: 0;"
+  ></mat-paginator>

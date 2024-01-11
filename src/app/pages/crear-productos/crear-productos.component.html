@@ -1,0 +1,148 @@
+<!-- crear-producto.component.html -->
+  <div class="container">
+    <form [formGroup]="registerForm" class="form-container">
+      <div class="form-column">
+        <h5>Info del Producto:</h5>
+       <br>
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Clave</mat-label>
+            <input matInput formControlName="clave" placeholder="Clave del producto">
+            <mat-error *ngIf="registerForm.get('clave')?.hasError('required')">La clave es requerida</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="descripcion" placeholder="Descripción del producto">
+          </mat-form-field>
+        </div>
+        
+
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Categoría</mat-label>
+            <mat-select formControlName="categoria">
+              <ng-container *ngFor="let list of catList">
+                <mat-option [value]="list.id">{{ list.descripcion }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Departamento</mat-label>
+            <mat-select formControlName="departamento">
+              <ng-container *ngFor="let list of departList">
+                <mat-option [value]="list.id">{{ list.descripcion }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Unidad</mat-label>
+            <mat-select formControlName="unidad">
+              <ng-container *ngFor="let list of uniList">
+                <mat-option [value]="list.id">{{ list.descripcion }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+        <button mat-button color="primary" (click)="fileInput.click()">Agregar Foto</button>
+        
+        <!-- Mostrar la imagen seleccionada -->
+        <img *ngIf="imagePreview" [src]="imagePreview" alt="Imagen seleccionada" width="200">
+       
+  
+        
+      </div>
+      
+      
+  
+      <div class="form-column">
+        <h5>Costos del Producto:</h5>
+        <br>
+         <div class="form-field">
+           <mat-form-field appearance="fill">
+             <mat-label>Costo de Compra</mat-label>
+             <input matInput formControlName="costoCompra" placeholder="Costo del producto" type="number">
+           </mat-form-field>
+         </div>
+        
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Precio1</mat-label>
+            <input matInput formControlName="precio1" placeholder="Precio del producto" type="number">
+            <mat-error *ngIf="registerForm.get('precio1')?.hasError('required')">El precio es requerido</mat-error>
+            <mat-error *ngIf="registerForm.get('precio1')?.hasError('min')">El precio debe ser mayor o igual a cero</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Precio2</mat-label>
+            <input matInput formControlName="precio2" placeholder="Precio del producto" type="number">
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Precio3</mat-label>
+            <input matInput formControlName="precio3" placeholder="Precio del producto" type="number">
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>P. Med. Mayoreo</mat-label>
+            <input matInput formControlName="precioMedioMayoreo" placeholder="Precio Medio Mayoreo" type="number">
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Precio Mayoreo</mat-label>
+            <input matInput formControlName="precioMayoreo" placeholder="Precio Mayoreo" type="number">
+          </mat-form-field>
+        </div>
+        
+      </div>
+
+
+      <div class="form-column">
+        
+        
+        <h5>Cantidad a por Mayor:</h5>
+        <br>
+
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Cant. Med. Mayoreo</mat-label>
+            <input matInput formControlName="cantidadMedioMayoreo" placeholder="Cantidad Medio Mayoreo" type="number">
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Cant. Mayoreo</mat-label>
+            <input matInput formControlName="cantidadMayoreo" placeholder="Cantidad Medio Mayoreo" type="number">
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" (click)="registrar()">Agregar Producto</button>
+        <br/>
+        <br/>
+        <button mat-raised-button color="accent" type="submit" (click)=" regresar()">Regresar a Productos</button>
+        
+      </div>
+  
+      
+       
+      
+    </form>
+  </div>

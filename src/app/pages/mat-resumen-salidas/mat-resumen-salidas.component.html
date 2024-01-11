@@ -1,0 +1,53 @@
+<div class="form">
+  <h2>Informacion Salida</h2>
+  <form [formGroup]="registerForm">
+<div class="container-wrapper">
+  
+    <div class="container">
+      <label>Este contenido es la Clave:</label>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Clave" formControlName="clave">
+      </mat-form-field>
+    </div>
+    <div class="container">
+        <label>Fecha de Registro:</label>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Fecha de Registro" formControlName="registro">
+        </mat-form-field>
+    </div>
+    <div class="container">
+        <label>Tipo de Salida</label>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Tipo de Salida" formControlName="tipo">
+        </mat-form-field>
+    </div>
+    
+  </div>
+  <div class="container-wrapper">
+    <div class="container">
+      <label>Producto Salido:</label>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Clave" formControlName="clave_producto">
+      </mat-form-field>
+    </div>
+    <div class="container">
+        <label>Lote de Entrada:</label>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Fecha de Registro" formControlName="lote_entrada">
+        </mat-form-field>
+    </div>
+    <div class="container">
+        <label>Cantidad</label>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Tipo de Salida" formControlName="cantidad">
+        </mat-form-field>
+    </div>
+    
+  </div>
+</form>
+
+</div>
+  
+  
+
+

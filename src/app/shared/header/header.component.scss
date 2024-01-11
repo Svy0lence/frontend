@@ -1,0 +1,21 @@
+.color {
+  background: linear-gradient(
+    to bottom,
+    #021750,
+    #2C4D9E
+  ); /* Gradiente vertical */
+  background-size: 100% 200%; /* Cambiado a 100% 200% para el gradiente vertical */
+  animation: gradientAnimation 20s linear infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}

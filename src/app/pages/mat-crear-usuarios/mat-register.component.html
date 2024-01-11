@@ -1,0 +1,46 @@
+
+<form class="registration-form" fxLayout="column" [formGroup]="registerForm">
+  <h2>Creacion de un Usuario</h2>
+    <label class="mt-2">Ingrese nombre:</label>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Nombres" formControlName="nombre">
+    </mat-form-field>
+    <label class="mt-2">Ingrese apellido:</label>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Apellidos" formControlName="apellido">
+    </mat-form-field>
+    <label class="mt-2">Ingrese Nombre de Usuario:</label>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Ingrese su usuario" formControlName="username">
+    </mat-form-field>
+    <label  class="mt-2">Ingresa una contraseña:</label>
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="Contraseña" formControlName="password">
+    </mat-form-field>
+    <label class="mt-2">De nuevo:</label>
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="Confirmar Contraseña" formControlName="confirmarPassword">
+    </mat-form-field>
+    <div *ngIf="registerForm?.get('confirmarContraseña')?.hasError('passwordMismatch')">
+      Las contraseñas no coinciden.
+    </div>
+   
+    <label class="mt-2">Elije el rol de la cuenta:</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccionar Rol</mat-label>
+      <mat-select formControlName="rol">
+        <ng-container *ngFor="let rold of rolList">
+          <mat-option [value]="rold.id">{{ rold.rol }}</mat-option> 
+        </ng-container>
+        
+      </mat-select>
+    </mat-form-field>
+    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+<button mat-button color="primary" (click)="fileInput.click()">Agregar Foto</button>
+
+<!-- Mostrar la imagen seleccionada -->
+<img *ngIf="imagePreview" [src]="imagePreview" alt="Imagen seleccionada" width="200">
+
+    <button mat-raised-button class="mt-2" color="primary" (click)="registrar()" [disabled]="!registerForm.valid">Crear</button>
+</form>
+

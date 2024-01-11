@@ -1,0 +1,25 @@
+// Estilos para el contenedor principal
+.container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; // Espacio entre los elementos
+  }
+
+  // Estilos para cada div con clase "container"
+  .container {
+    flex: 0 1 calc(33.33% - 10px); // Para distribuir en 3 columnas
+    margin-bottom: 20px; // Espacio entre los elementos (puedes ajustarlo)
+    background-color: #f0f0f0; // Color de fondo para visualización
+  }
+  
+  // Esto es un ejemplo para simular el contenido
+  .container {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .form {
+    padding: 20px; /* Ajusta el valor según la cantidad de sangría que desees */
+  }
+
+  

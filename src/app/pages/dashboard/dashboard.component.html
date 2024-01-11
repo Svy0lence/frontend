@@ -1,0 +1,221 @@
+<div class="content" id="mainContent">
+  <!-- Contenido inicial (carga) -->
+  <div class="initial-content vibrating-image" id="vibratingImage" *ngIf="!showImage">
+    <!-- Puedes agregar aquí cualquier contenido de carga que desees mostrar -->
+    <img src="../assets/img/paloma.png" alt="Vibrating Image" class="vibration mt-16" style="width: 200px; height: auto; border-radius: 90%;">
+  </div>
+  <!-- Contenedor para el contenido del dashboard -->
+  <div *ngIf="showImage">
+    <!-- Tu contenido del dashboard -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>15<sup style="font-size: 20px">Productos</sup></h3>
+                <p>Ventas de Hoy</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6" @enterState>
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>10<sup style="font-size: 20px">Lotes</sup></h3>
+  
+                <p>Ultimas entradas de productos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>4<sup style="font-size: 20px">Productos</sup></h3>
+  
+                <p>Productos a Vencer</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6" @enterState>
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>2<sup style="font-size: 20px">Productos</sup></h3>
+  
+                <p>Productos Vencidos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+  
+  
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Ventas de Hoy Total: $400</h3>
+  
+            <div class="card-tools">
+              <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-default">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Venta</th>
+                  <th>Fecha</th>
+                  <th>Rol</th>
+                  <th>Detalle de venta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jordan</td>
+                  <td>U.Paracetamol</td>
+                  <td>11-7-2014</td>
+                  <td><span class="tag tag-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>219</td>
+                  <td>Alexander Pierce</td>
+                  <td>11-7-2014</td>
+                  <td><span class="tag tag-warning">Pending</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>657</td>
+                  <td>Bob Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="tag tag-primary">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>175</td>
+                  <td>Mike Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="tag tag-danger">Denied</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+  
+  
+  
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Productos proximos a vencer:</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Productos</th>
+                  <th>Dias a Vencer</th>
+                  <th style="width: 40px">Porcetanje</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td>Update software</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-danger">55%</span></td>
+                </tr>
+                <tr>
+                  <td>2.</td>
+                  <td>Clean database</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-warning" style="width: 70%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-warning">70%</span></td>
+                </tr>
+                <tr>
+                  <td>3.</td>
+                  <td>Cron job running</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar bg-primary" style="width: 30%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-primary">30%</span></td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Fix and squish bugs</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar bg-success" style="width: 90%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-success">90%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+              <li class="page-item"><a class="page-link" href="#">«</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+          </div>
+        </div>
+  
+        
+  
+        
+      </div>
+    </section>
+  </div>
+</div>
+
+
+

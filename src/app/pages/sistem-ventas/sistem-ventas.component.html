@@ -1,0 +1,187 @@
+
+
+
+<div class="container">
+  <div class="form-container">
+    <div class="form-column">
+  
+
+      <div class="container-column-client" >
+        <div class="form-client">
+    
+        <div class="__form-client">
+          <mat-form-field class="example-full-width ml-2 mt-2">
+            <mat-label>Nombre Cliente</mat-label>
+            <input matInput placeholder="Nombres y Apellidos">
+          </mat-form-field>
+          <mat-form-field class="example-full-width ml-2 mt-2">
+            <mat-label>Dni o Ruc</mat-label>
+            <input matInput placeholder="Ingrese Dígitos" type="text">
+          </mat-form-field>
+          <mat-form-field class="example-full-width ml-2 mt-2">
+            <mat-label>Teléfono</mat-label>
+            <input matInput placeholder="Ingrese Dígitos" type="text">
+          </mat-form-field>
+          <button mat-raised-button  color="primary" (click)="openDialog()" class="ml-2">+Añadir</button>
+          <button mat-raised-button color="accent" class="ml-2" >Vender</button>
+        </div>
+    
+        <!--<div style="display: flex; align-items: center;">
+    
+          <h5  style="margin-left: 20px;">Total: S/500</h5>
+        </div>-->
+        
+        </div>
+
+  
+
+
+     
+<mat-table [dataSource]="dataSource" style="margin-bottom: 20px;" class="mat-elevation-z8">
+  <!-- Columnas de la tabla -->
+  <ng-container matColumnDef="clave">
+    <mat-header-cell *matHeaderCellDef>Nombre del Producto</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.clave }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.descripcion }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="unidadMedida">
+    <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.unidad_medida }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="precio">
+    <mat-header-cell *matHeaderCellDef>Precio U.</mat-header-cell>
+    <mat-cell *matCellDef="let element">S/{{ element.precioseleccionado }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cantidad">
+    <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="element.cantidad = decrementarCantidadFunc(element.cantidad);" style="display: flex; align-items: center; justify-content: center;">-</button>
+        {{ element.cantidad }}
+      <button mat-icon-button (click)="element.cantidad = incrementarCantidadFunc(element.cantidad);" style="display: flex; align-items: center; justify-content: center;">+</button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="subtotal">
+    <mat-header-cell *matHeaderCellDef>Subtotal</mat-header-cell>
+    <mat-cell *matCellDef="let element">S/{{ (element.precioseleccionado*element.cantidad) }}</mat-cell>
+  </ng-container>
+    
+  <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index">
+      
+        <button mat-raised-button color="primary" class="-ml-4"  style="display: flex; align-items: center; justify-content: center;">
+          <mat-icon style="margin: 0;">edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" class="ml-2" (click)="eliminarProducto(i)"  style="display: flex; align-items: center; justify-content: center;">
+          <mat-icon style="margin: 0;">delete</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+</div><!-- cerrar columna-->
+
+<div class="form-column" style="flex: 0.7;">
+  <div class="container-column-factura">
+
+    <div class="head-factura">
+      <div class="shape">
+        
+      </div>
+      <div class="text-head-factura">
+        <p>S/ 185.00</p>
+      </div>
+      
+    </div>
+
+
+    <div class="body-factura" >
+      <p>Documento Contable</p>
+      <mat-form-field appearance="outline" style="display:flex">
+      <mat-select>
+        <ng-container>
+          <mat-option value="aea">ab</mat-option>
+        </ng-container>
+      </mat-select>
+      </mat-form-field>
+
+      <p>Fecha de Emisión</p>
+      <mat-form-field appearance="outline" style="display:flex">
+        <mat-label>08/01/2024</mat-label>
+        <input matInput disabled>
+        <mat-icon matSuffix>calendar_month</mat-icon>  
+      </mat-form-field>
+
+    </div>
+
+    
+    <div class="footer-factura" style="padding: 0 0% 0 1%;">
+
+      <div class="footer-nav">
+        <div class="footer-nav-form-container">
+          <div class="footer-nav-form-column" >
+            <div class="form-field">OP. GRAVADAS</div>
+            <div class="form-field">Box 2</div>
+            <div class="form-field">Box 3</div>
+            <div class="form-field">Box 4</div>
+            <div class="form-field">Box 5</div>
+            <div class="form-field">Box 6</div>
+            
+          </div>
+
+          <div class="footer-nav-form-column" style="text-align: end;">
+            <div class="form-field">Box 10</div>
+            <div class="form-field">Box 11</div>
+            <div class="form-field">Box 12</div>
+            <div class="form-field">Box 13</div>
+            <div class="form-field">Box 14</div>
+            <div class="form-field">Box 15</div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-body">
+        <button mat-raised-button color="accent">Accent</button>
+
+        <button mat-raised-button color="warn">Warn</button>
+      </div>
+      
+    
+  </div>
+
+
+
+
+
+</div>
+</div><!-- cerrar columna-->
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
