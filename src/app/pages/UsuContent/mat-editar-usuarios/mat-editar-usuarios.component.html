@@ -1,0 +1,50 @@
+<!-- En tu archivo de componente MatEditarUsuariosComponent -->
+<form class="registration-form" fxLayout="column" [formGroup]="registerForm">
+    <h2>Editar un Usuario</h2>
+    <label class="mt-2">Ingrese nombre:</label>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Nombres" formControlName="nombre">
+    </mat-form-field>
+
+    <label class="mt-2">Ingrese apellido:</label>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Apellidos" formControlName="apellido">
+    </mat-form-field>
+
+    <label class="mt-2">Usuario:</label>
+    <mat-form-field class="full-width -mb-4">
+      <input matInput placeholder="Ingrese su usuario" formControlName="username" readonly>
+    </mat-form-field>
+    <div style="font-style: italic; color: #888; margin-top: 5px;" class="-mt-3">Por seguridad, los usuarios no se pueden editar :)</div>
+
+    <label class="mt-2">Ingresa una contraseña:</label>
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="Contraseña" formControlName="password">
+    </mat-form-field>
+
+
+    <label class="mt-2">Elije el Estado :</label>
+    <mat-slide-toggle  [(ngModel)]="toggleChecked" (change)="onToggleChange()" formControlName="estado" checked >
+      <!--<p *ngIf="toggleChecked">Activo</p>
+      <p *ngIf="!toggleChecked">Inactivo</p>-->
+    </mat-slide-toggle>
+  
+    <label class="mt-2">Elije el rol de la cuenta:</label>
+    <mat-form-field>
+      <mat-select formControlName="rol">
+        <mat-option [value]="data.id_rol">{{ data.rol }}</mat-option> 
+        <ng-container *ngFor="let rold of rolList">
+          <mat-option [value]="rold.id">{{ rold.rol }}</mat-option> 
+        </ng-container>
+        
+      </mat-select>
+    </mat-form-field>
+    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+    <button mat-button color="primary" (click)="fileInput.click()">Agregar Foto</button>
+  
+    <!-- Mostrar la imagen seleccionada -->
+    <img *ngIf="imagePreview" [src]="imagePreview" alt="Imagen seleccionada" width="200">
+  
+    <button mat-raised-button class="mt-2" color="primary" (click)="actualizar()">Actualizar</button>
+  </form>
+  

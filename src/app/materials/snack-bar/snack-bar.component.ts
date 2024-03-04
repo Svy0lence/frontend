@@ -27,4 +27,5 @@ export class SnackBarComponent {
     this.message = data?.message || 'Default Message';
     this.image = data?.image || 'Default Message';
   }
+  
 }

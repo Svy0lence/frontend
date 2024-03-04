@@ -1,0 +1,37 @@
+<div class="search-container">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Filtro de la Tabla Marcas</mat-label>
+    <input matInput placeholder="Ingresa y apreta el boton azul" (keyup)="filterTable($event)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="exportToExcel()">Exportar a Excel</button>
+</div>
+<mat-table [dataSource]="dataSource" matSort>
+  <!-- Columnas de la tabla -->
+  <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+      <mat-cell *matCellDef="let marca">{{ marca.idMarca }}</mat-cell>
+    </ng-container>
+  <ng-container matColumnDef="descripcion">
+    <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+    <mat-cell *matCellDef="let marca">{{ marca.NombreMarca }}</mat-cell>
+  </ng-container>
+  
+  <ng-container matColumnDef="acciones" style="position: relative;">
+    <mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" (click)="openCreate()" class="-ml-4">+ Marcas</button></mat-header-cell>
+    <mat-cell *matCellDef="let marca">
+      <button mat-raised-button color="primary" class="-ml-4" (click)="openUpdate(marca)" style="display: flex; align-items: center; justify-content: center;">
+        <mat-icon style="margin: 0;">edit</mat-icon>
+      </button>
+      <button mat-raised-button color="warn" class="ml-2" (click)="openDelete(marca)" style="display: flex; align-items: center; justify-content: center;">
+        <mat-icon style="margin: 0;">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator  [pageSizeOptions]="[10, 25, 100]"></mat-paginator>

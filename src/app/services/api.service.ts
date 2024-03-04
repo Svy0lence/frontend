@@ -28,9 +28,4 @@ export class ApiService {
     return this.http.put(`${API_URL}${resource}`, data);
   }
 
-
-  /*get(resource: string, params?: any): Observable<any> {
-    return this.http.get(`${API_URL}${resource}`, { params: params });
-  }*/
-
 }

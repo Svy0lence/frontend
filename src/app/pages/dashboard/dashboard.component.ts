@@ -23,18 +23,34 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DashboardComponent implements OnInit {
   
-  showImage: boolean = false;
+  showImage: boolean = true;
+
+  productoTotal: Number = 0;
+  modeloTotal: Number = 0;
+  marcaTotal: Number = 0;
+  tallaTotal: Number = 0;
+
   constructor(private api: ApiService){
   }
 
   ngOnInit(): void {
-    // Después de 5 segundos, mostrar la imagen vibrante y ocultar el contenido inicial
-    setTimeout(() => {
-      this.showImage = true;
-    }, 1000); // 5000 milisegundos = 5 segundos
+    this.getDashboard()
   }
 
  
+
+  async getDashboard() {
+    
+    const result = await this.api.get('dashboard/list').toPromise();
+
+    this.productoTotal = result.data.countProducto
+    this.modeloTotal = result.data.countModelos
+    this.marcaTotal = result.data.countMarcas
+    this.tallaTotal = result.data.countTalla
+    this.showImage = false;
+  }
+
+
 }
   
   

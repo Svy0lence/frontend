@@ -1,0 +1,67 @@
+<section class="relative">
+  <div class="background-container">
+  <div class="bg-overlay"></div>
+  <img
+    src="../assets/img/FOOTLOOSE.jpg" 
+    alt="Imagen de fondo"
+    class="w-screen h-screen object-cover"
+     
+  />
+  </div>
+  
+  <div class="absolute top-0 right-0 w-[30rem] h-screen bg-[#470942bd] px-20 pb-14">
+    
+    <div class="center-vertically">
+      <img
+        src="../assets/img/FOOTLOOSELOGOLOGIN.jpg"
+        alt="Imagen de logo"
+        class="mx-auto w-120 h-30 mt-[1.125rem] mb-[2.375rem]" style="width: 50%"
+      />
+      <h1 class="mb-[2rem] text-[1.25rem] text-white color2 font-semibold">Iniciar Sesion</h1>
+      <div class="mb-[2rem]">
+        <div *ngIf="showError" class="box-error">
+          <p>{{ messageError }}</p>
+        </div>
+        <form [formGroup]="loginForm">
+          <div>
+               <label class="color">Usuario:</label>
+               <input type="text" class="form-control teo"  formControlName="username">
+          </div>  
+            
+          <div>
+              <label for="password" class="color mt-2">Contraseña:</label>
+              <div class="input-group">
+                <input
+                  type="{{ showPassword ? 'text' : 'password' }}"
+                  class="form-control teo"
+                  id="password"
+                  name="password"
+                  formControlName="password"
+                >
+          
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="togglePasswordVisibility()"
+                  >
+                    <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                  </button>
+                </div>
+                
+              </div>
+              
+            </div>
+            <br>
+            <div>
+              <button class="btn btn-primary btn1" style="width: 100%;" (click)=" onLogin()">Continuar</button>
+            </div>
+           
+            
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -13,7 +13,8 @@ export class SalirComponent {
   }
 
   logout(){
-    this.router.navigateByUrl('/landingPage')
+    localStorage.clear();
+    this.router.navigateByUrl('/login')
     this.dialogRef.close();
   }
 

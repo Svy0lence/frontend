@@ -6,7 +6,6 @@ export interface User {
     apellido: any,
     photo?: any,
     estado?: any,
-    estadoUsuario?: any,
     rol?: any,
     id_rol?: any,
     file?: any

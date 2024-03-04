@@ -1,0 +1,78 @@
+<div class="search-container">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Filtro de la Tabla Productos</mat-label>
+      <input matInput placeholder="Ingresa y apreta el boton azul" (keyup)="filterTable($event)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="selectFile()">Carga Masiva Excel</button>
+    <input type="file" style="display: none;" (change)="onFileInputChange($event)" #fileInput />
+    <button mat-raised-button color="primary" (click)="exportToExcel()">Exportar a Excel</button>
+
+  </div>
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- Columnas de la tabla -->
+    <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.idProducto }}</mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.NombreProducto }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="marca">
+        <mat-header-cell *matHeaderCellDef>Marca</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.NombreMarca }}</mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="modelo">
+      <mat-header-cell *matHeaderCellDef>Modelo</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.NombreModelo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="color">
+        <mat-header-cell *matHeaderCellDef>Color</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.NombreColor }}</mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="talla">
+      <mat-header-cell *matHeaderCellDef>Talla</mat-header-cell>
+      <mat-cell *matCellDef="let producto">{{ producto.NombreTalla }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+        <mat-header-cell *matHeaderCellDef>Precio de Venta</mat-header-cell>
+        <mat-cell *matCellDef="let producto">{{ producto.PrecioVenta }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="imagen">
+        <mat-header-cell *matHeaderCellDef>Imagen</mat-header-cell>
+        <mat-cell *matCellDef="let producto">
+            <img [src]="API_URL+'/images/'+producto.imagen" alt="Imagen" width="50">
+        </mat-cell>
+      </ng-container>
+    
+    <ng-container matColumnDef="acciones" style="position: relative;">
+      <mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" (click)="openCreate()" class="-ml-4">+ Productos</button></mat-header-cell>
+      <mat-cell *matCellDef="let producto">
+      <div style="max-width: 100%;">
+        <button mat-mini-fab color="accent" class="btn-row -ml-4" (click)="openViewPDF(producto)" >
+          <mat-icon style="margin: 0;">visibility</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="primary" class="btn-row" (click)="openUpdate(producto)" >
+          <mat-icon style="margin: 0;">edit</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="warn" class="btn-row" (click)="openDelete(producto)" >
+          <mat-icon style="margin: 0;">delete</mat-icon>
+        </button>
+      </div>
+
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  
+  <mat-paginator  [pageSizeOptions]="[10, 25, 100]"></mat-paginator>

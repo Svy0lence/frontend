@@ -1,0 +1,12 @@
+
+<form class="registration-form" fxLayout="column">
+    <h2>Creacion de una Color</h2>
+      <label class="mt-2">Ingrese nombre:</label>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nombre de la Color" [formControl]="nombre">
+      </mat-form-field>
+     
+      <button mat-raised-button class="mt-2" color="primary" (click)="registrar()" [disabled]="nombre.invalid">Crear</button>
+      
+</form>
+  

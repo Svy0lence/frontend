@@ -1,0 +1,46 @@
+<div class="search-container">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Filtro de la Tabla Permisos</mat-label>
+    <input matInput placeholder="Ingresa y apreta el boton azul" (keyup)="filterTable($event)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+</div>
+
+<div [ngClass]="{'disabled': disabledButtons}" class='component-container'>
+    <mat-table [dataSource]="dataSource" matSort>
+        <!-- Columnas de la tabla -->
+        <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+          <mat-cell *matCellDef="let rol">{{ rol.rol }}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="estado">
+          <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+          <mat-cell *matCellDef="let rol" >
+            <div [ngClass]="rol.estado === 1 ? 'circulo' : 'circulo2'"></div>
+            {{ rol.estado === 1 ? 'Activo' : 'Inactivo' }}
+          </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="acciones">
+          <mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" (click)="openDialog()" class="ml-2">Crear Rol</button></mat-header-cell>
+          <mat-cell *matCellDef="let rol">
+            <ng-container *ngIf="rol.id !== 1">
+              <button mat-raised-button color="primary" (click)="openDialog2(rol)" style="display: flex; align-items: center; justify-content: center;">
+                <mat-icon style="margin: 0;">edit</mat-icon>
+              </button>
+              <button mat-raised-button color="warn" class="ml-2" (click)="eliminar(rol)" style="display: flex; align-items: center; justify-content: center;">
+                <mat-icon style="margin: 0;">delete</mat-icon>
+              </button>
+            </ng-container>
+            
+          </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+      
+    <mat-paginator  [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+  </div>

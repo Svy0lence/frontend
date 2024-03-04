@@ -6,6 +6,7 @@ import { User } from 'src/app/models/interfaces/user.interface';
 import { API_URL} from 'src/app/ServicioApi/apiConfig';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SalirComponent } from 'src/app/pages/salir/salir.component';
+import { SidebarService } from 'src/app/services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,7 +22,7 @@ export class SidebarComponent implements OnInit {
 
   dialogRef: MatDialogRef<SalirComponent> | null = null;
   
-  constructor(private api: ApiService, private router:Router, private dialog: MatDialog){
+  constructor(private api: ApiService, private router:Router, private dialog: MatDialog, private sidebarService: SidebarService){
 
   }
 
@@ -35,18 +36,35 @@ export class SidebarComponent implements OnInit {
 
       this.dialogRef.afterClosed().subscribe(result => {
         console.log('El diálogo ha sido cerrado');
-        this.dialogRef = null; // Restablece la referencia del diálogo a null
+
       });
     }
     
   }
+  async generarSidebar() {
+    const userJson = localStorage.getItem('currentUser');
+    if (userJson) {
+      this.currentUser = JSON.parse(userJson);
+      this.usuario = this.currentUser;
+      this.sidebarService.menusPadre$.subscribe((menusPadre) => {
+        this.menusPadre = menusPadre;
+        console.log(menusPadre)
+      });
 
-async generarSidebar() {
+      this.sidebarService.menusHijo$.subscribe((menusHijo) => {
+        this.menusHijo = menusHijo;
+      });
+    }    
+  }
+
+/*async generarSidebar() {
+
+  
   const userJson = localStorage.getItem('currentUser');
 
   if (userJson) {
     this.currentUser = JSON.parse(userJson);
-    this.usuario = this.currentUser.data;
+    this.usuario = this.currentUser;
 
     try {
       
@@ -64,7 +82,8 @@ async generarSidebar() {
       alert(error);
     }
   }
-}
+}*/
+
 
 }
 
